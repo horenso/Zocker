@@ -1,18 +1,21 @@
 const std = @import("std");
-const model = @import("./model.zig");
+const Card = @import("model/model.zig").Card;
+const HandEvaluator = @import("hand_evaluator.zig").HandEvaluator;
 
-pub fn main() anyerror!void {
-    const cards = [4]model.Suit{
-        model.Suit.fromInt(0),
-        model.Suit.fromInt(1),
-        model.Suit.fromInt(2),
-        model.Suit.fromInt(3),
+pub fn main() !void {
+    const stdout = std.io.getStdOut().writer();
+    var card_list: [7]Card = [_]Card{
+        Card{ .value = .ace, .suit = .hearts },
+        Card{ .value = .two, .suit = .diamonds },
+        Card{ .value = .three, .suit = .hearts },
+        Card{ .value = .four, .suit = .spades },
+        Card{ .value = .five, .suit = .diamonds },
+        Card{ .value = .six, .suit = .hearts },
+        Card{ .value = .seven, .suit = .hearts },
     };
-    std.log.info("Cards: {u}, {u}, {u}, {u}.", .{
-        cards[0].toSymbol(),
-        cards[1].toSymbol(),
-        cards[2].toSymbol(),
-        cards[3].toSymbol(),
-    });
-    std.log.info("All your codebase are belong to us.", .{});
+
+    var hand_evaluator = HandEvaluator.new();
+    const hand = hand_evaluator.rateHand(card_list);
+
+    try stdout.print("'{}'", .{hand});
 }
