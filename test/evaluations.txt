@@ -1,0 +1,205 @@
+# high_card
+TC 5H 7D JH 4H 2H 8D - high_card - JH TC 8D 7D 5H
+3S 2D TD 7H 8S 6H JD - high_card - JD TD 8S 7H 6H
+8D 4D JS 2H 5D QD 7S - high_card - QD JS 8D 7S 5D
+KD 8S 9S 7C 2S 3S 6D - high_card - KD 9S 8S 7C 6D
+JD 2H 5C AS 6C QC 4D - high_card - AS QC JD 6C 5C
+AH QH 3C JD KC 4S 5S - high_card - AH KC QH JD 5S
+QC AS 2S JS 5C 6H KD - high_card - AS KD QC JS 6H
+3D AS QH KS 7H JD 8S - high_card - AS KS QH JD 8S
+2H 6C 7C KH 5C AD QS - high_card - AD KH QS 7C 6C
+7S KS 6C 2S 4D AC QS - high_card - AC KS QS 7S 6C
+6C 5S 9C QH 7D AH KS - high_card - AH KS QH 9C 7D
+9C 7D QD KD AC 6D 5H - high_card - AC KD QD 9C 7D
+5H QD 2S AC 8C 9H KS - high_card - AC KS QD 9H 8C
+AD 3C 4H QS 8C 9D KS - high_card - AD KS QS 9D 8C
+TH 4S 2D KC 3H QD AC - high_card - AC KC QD TH 4S
+2H 8C AD TH 6H QD KD - high_card - AD KD QD TH 8C
+
+# random pair tests, test the order of cards and kickers
+7H QH KH JD TC KS 5S - pair - KH KS QH JD TC
+7H 2C KC 5S KD 6H AH - pair - KD KC AH 7H 6H
+3C KD KH 2S 4C TS AC - pair - KH KD AC TS 4C
+TD 2S KS 3D AD KC 7S - pair - KC KS AD TD 7S
+8H KS AC 2D KH TS 6C - pair - KH KS AC TS 8H
+TD AD 6S 7H KD KH 9H - pair - KD KH AD TD 9H
+6D KH KC QD 5C AD 7C - pair - KC KH AD QD 7C
+KD QS 9C 7S 3D KS AD - pair - KS KD AD QS 9C
+7C 5H KC QH JD AS KH - pair - KC KH AS QH JD
+QH AS 9H 4D JD KS KD - pair - KD KS AS QH JD
+8H QD 4H JC AS KH KS - pair - KH KS AS QD JC
+3H AC TS 5D AD 8D 6H - pair - AD AC TS 8D 6H
+AH 5S 6H 9S AD 3S TH - pair - AD AH TH 9S 6H
+AS 2S TD AD 4D 9H JC - pair - AD AS JC TD 9H
+AD AC 2C 6S QD 7C 3H - pair - AD AC QD 7C 6S
+5D AS 8S 6S 4C AH QC - pair - AH AS QC 8S 6S
+4S 6H 7C QD 9D AS AH - pair - AH AS QD 9D 7C
+AS 5C AD QH 7D 2H 9S - pair - AD AS QH 9S 7D
+8C 9D AH 2H AC QC 5S - pair - AC AH QC 9D 8C
+9H 2D 8D QC 6S AD AS - pair - AD AS QC 9H 8D
+QD 9H 3C 2H AC AS 8S - pair - AC AS QD 9H 8S
+AH 6S AS 7H 5S KD 3H - pair - AS AH KD 7H 6S
+2H 5D AD AC KS 3D 8H - pair - AD AC KS 8H 5D
+7C TD 4D 5S KH AC AS - pair - AC AS KH TD 7C
+AC 3D AS 8C TD 7H KH - pair - AS AC KH TD 8C
+2H 7D QC 6S TC TS AH - pair - TC TS AH QC 7D
+AD QH TH 9D 8H TS 6D - pair - TH TS AD QH 9D
+QS 7S 4C TH 9D TS AD - pair - TH TS AD QS 9D
+TD TS 7C AD JC QD 9H - pair - TD TS AD QD JC
+6H TS 7S JC QD AC TD - pair - TD TS AC QD JC
+5H 6S KS AD TC TS 7C - pair - TC TS AD KS 7C
+6S TH TS KS 2C QC AH - pair - TS TH AH KS QC
+TS AC QC TH KC 6D 4H - pair - TH TS AC KC QC
+8S TH 3H 7C 2H JD JS - pair - JD JS TH 8S 7C
+6D 4H TS 9C 5H JS JH - pair - JH JS TS 9C 6D
+7S 2C 8S 5S JH QS JC - pair - JC JH QS 8S 7S
+JC 6S 9C QH JH 8D 7S - pair - JH JC QH 9C 8D
+KD 5H JC 8H JD 2D 4H - pair - JD JC KD 8H 5H
+7C 9H 8H 4D JC KH JD - pair - JD JC KH 9H 8H
+8D 2D KS 9S JC 4C JD - pair - JD JC KS 9S 8D
+JH 5C TD 4C 6H JS KD - pair - JS JH KD TD 6H
+7S 9S 4D TD JH JS KH - pair - JH JS KH TD 9S
+JH 2H JD 9S 7S TS KH - pair - JD JH KH TS 9S
+KH 6D 2D JD 5H JS QD - pair - JD JS KH QD 6D
+JC KH 2D 7D JS QC 5H - pair - JS JC KH QC 7D
+QS 4D 2D 7S KH JS JC - pair - JC JS KH QS 7S
+KD 8C 9S JH QD JS 2C - pair - JH JS KD QD 9S
+QH KC 9D 4D 3S JS JH - pair - JH JS KC QH 9D
+QH TS 6S 4D JS KS JH - pair - JH JS KS QH TS
+4C JC AS 9D 3C JS 6C - pair - JS JC AS 9D 6C
+2D AS 9S 6H 4D JS JH - pair - JH JS AS 9S 6H
+4C 9H JH TS 3S 4H QC - pair - 4H 4C QC JH TS
+2H 4D AH 2D JH 6H TD - pair - 2D 2H AH JH TD
+JH QS KS 9C 6D 6S AS - pair - 6D 6S AS KS QS
+2H 4D AH 2D JH 6H TD - pair - 2D 2H AH JH TD
+
+# two_pair
+QD KH JS KS 9S QC 8D - two_pair - KS KH QC QD JS
+7C 8D 5S 2D 2S AH AD - two_pair - AD AH 2D 2S 8D
+JS 5C 7S AS 2C AH 2H - two_pair - AH AS 2C 2H JS
+3H KD 4S QD QH 3D 8H - two_pair - QD QH 3D 3H KD
+QH QC JS 3D 3C 5C 4H - two_pair - QC QH 3D 3C JS
+2D 5S 2H 9C 6H 9S TD - two_pair - 9C 9S 2H 2D TD
+2C 9H 2D AH 3H 6D 9C - two_pair - 9C 9H 2D 2C AH
+6D 7H AH 7S QC 6H 2D - two_pair - 7S 7H 6H 6D AH
+5C TD 4S 4D AD 6S 5D - two_pair - 5D 5C 4D 4S AD
+3C QS 2S 4H JH 3D 2D - two_pair - 3D 3C 2D 2S QS
+QS KH 3S 2C 2S 3C 7S - two_pair - 3C 3S 2C 2S KH
+6C 3S 3D 2S 4S QD 2D - two_pair - 3D 3S 2D 2S QD
+2H 7H 3S 2S 5H QS 3C - two_pair - 3C 3S 2S 2H QS
+
+# two_pair with 3 pairs select the strongest two
+AH 6S AS 7H 5S 6D 5H - two_pair - AS AH 6D 6S 7H
+2H 8D AD AC KS KD 8H - two_pair - AD AC KD KS 8H
+7C TD 5D 5S TH AC AS - two_pair - AC AS TH TD 7C
+3C JS 2S 4H JH 3D 2D - two_pair - JH JS 3D 3C 4H
+2D 3H 7D JD 3D AS 7S - two_pair - 7D 7S 3D 3H AS
+QS KH 3S 2C 2S 3C KS - two_pair - KS KH 3C 3S QS
+7C 6S 5C 5D 6C 4S 7H - two_pair - 7H 7C 6C 6S 5D
+
+# three_of_a_kind
+3C KC 6D 5D 6C 6H 8S - three_of_a_kind - 6D 6C 6H KC 8S
+AD 6C 6S 7D TH 6H 2H - three_of_a_kind - 6H 6S 6C AD TH
+5S 7C 8S 7D 2C KS 7S - three_of_a_kind - 7D 7S 7C KS 8S
+7D 6C 8D 8H 5C JH 8S - three_of_a_kind - 8D 8H 8S JH 7D
+8H JH TC 3S 8D 8C 9S - three_of_a_kind - 8D 8C 8H JH TC
+9S 3H 9D JD 5C 4D 9H - three_of_a_kind - 9D 9H 9S JD 5C
+6H 9H 9S 2H QS 8S 9C - three_of_a_kind - 9C 9S 9H QS 8S
+TS 3S AD 4S TD 2D TH - three_of_a_kind - TD TH TS AD 4S
+JD JS JC TH 2D 3D QD - three_of_a_kind - JC JD JS QD TH
+8C QD JC QS TC QC 4H - three_of_a_kind - QC QS QD JC TC
+
+# full_house
+8C 2D 2H 2C 4S 4C 6S - full_house - 2C 2H 2D 4C 4S
+3D AC 9S AS 2C 2D 2H - full_house - 2D 2C 2H AS AC
+3D 5C 6H 3S 3C JC 5S - full_house - 3C 3S 3D 5S 5C
+3D AD 3C 3S 4C QC AS - full_house - 3C 3S 3D AS AD
+5C AD 5D AC 9C 7C 5H - full_house - 5D 5H 5C AC AD
+6C 6S 3H 5H 3S 6H KS - full_house - 6H 6C 6S 3H 3S
+8S JS 6D 4H JH 6H 6S - full_house - 6D 6H 6S JH JS
+QD 6H 9C 7C QS 6D 6S - full_house - 6D 6S 6H QS QD
+8H 6H JH 6C 5D 8D 8S - full_house - 8D 8S 8H 6C 6H
+TS 6S QC 6C TH TC 9D - full_house - TC TH TS 6C 6S
+
+# full_house with 2 sets of triples
+6C 6S 3H 3D 3S 6H KS - full_house - 6H 6C 6S 3D 3H
+JD QS JH QC 2S QH JC - full_house - QC QH QS JC JH
+6C 6S 3H 3D 3S 6H KS - full_house - 6H 6C 6S 3D 3H
+JS 6D JD JC 6H AC 6C - full_house - JD JC JS 6C 6H
+QD 9H 5S QS QC 9C 5H - full_house - QC QS QD 9C 9H
+
+# four_of_a_kind
+JC JH JD 3S 7S 8S JS - four_of_a_kind - JD JS JC JH 8S
+JH QS QD QC QH JS JC - four_of_a_kind - QD QC QH QS JC
+AD 2D 3D 2C 5D 2H 2S - four_of_a_kind - 2C 2H 2S 2D AD
+9C 2C 2H 9D 9H 9S 2D - four_of_a_kind - 9D 9H 9S 9C 2D
+
+# four_of_a_kind choosing the right kicker
+JH JS JC QS QD QC QH - four_of_a_kind - QD QC QH QS JC
+QS QD JH JD JC QC QH - four_of_a_kind - QC QH QD QS JD
+QS QD JH JC QC QH JD - four_of_a_kind - QC QH QD QS JD
+QS QD JH JC QC QH JD - four_of_a_kind - QC QH QD QS JD
+
+# straight, random tests
+KS 3D 4H 5H TC 2S AS - straight - 5H 4H 3D 2S AS
+2D 5C 6H TC 4D QH 3D - straight - 6H 5C 4D 3D 2D
+3C JS 4S 6D 5H 2S QH - straight - 6D 5H 4S 3C 2S
+7S 3H JC 5S 6H 4C 2S - straight - 7S 6H 5S 4C 3H
+5D 4D 3H 4H 6S 7C 7S - straight - 7C 6S 5D 4H 3H
+JD 4S 6S 5S 8D 7H 7S - straight - 8D 7H 6S 5S 4S
+7D 4C 8S 5C JH 8H 6S - straight - 8H 7D 6S 5C 4C
+2D 9D 7H 6H 3C 8S 5H - straight - 9D 8S 7H 6H 5H
+6S QD JH 7C 9H 5H 8S - straight - 9H 8S 7C 6S 5H
+TS 8H 9S 6S 7S QH 3C - straight - TS 9S 8H 7S 6S
+7H 6C 2C 5C TH 9D 8D - straight - TH 9D 8D 7H 6C
+5S 8D TH 6C 9D 7D KH - straight - TH 9D 8D 7D 6C
+5D JD 7D TC 8C 6C 9S - straight - JD TC 9S 8C 7D
+3D 9D TC 8S QD 2C JC - straight - QD JC TC 9D 8S
+8D 9H AH JD TD QS 7D - straight - QS JD TD 9H 8D
+9D QD JC 2H 6D KH TS - straight - KH QD JC TS 9D
+
+# straight, prefer cards on the table over hand cards
+AD 2H 3D 4H 5S KD AS - straight - 5S 4H 3D 2H AS
+3D 7C 4C 7S 5S 3S 6S - straight - 7S 6S 5S 4C 3S
+KS JC QD TH 9S KD 8D - straight - KD QD JC TH 9S
+
+# straight, prefer DIAMONDS then CLUBS then HEARTS then SPADES
+# This is a random convention for the order of the returned cards
+2C KH 3C 4C 6H 4D 5H - straight - 6H 5H 4D 3C 2C
+7C 5C 9C 8S 7D 6D 8D - straight - 9C 8D 7D 6D 5C
+KH 4H AS JS QS QC TC - straight - AS KH QC JS TC
+
+# flush vs straight
+3D 5D 9C 2D AC 4S 2S - straight - 5D 4S 3D 2D AC
+3D 5C 9D 2C AD 4D 2D - flush - AD 9D 4D 3D 2D
+AD 2D 3H 4D 5D KD AS - flush - AD KD 5D 4D 2D
+
+# flush
+9C 7C AS JS TS 3S 2S - flush - AS JS TS 3S 2S
+4S QS 7D AS 9H JS KS - flush - AS KS QS JS 4S
+TD 8C 4H 7C TC KC 4C - flush - KC TC 8C 7C 4C
+QD 8C 8D 2D 6S TD 9D - flush - QD TD 9D 8D 2D
+
+# straight_flush
+AD 2D 3D 4D 5D AH AS - straight_flush - 5D 4D 3D 2D AD
+6D 2D 3D 4D 5D 7S KD - straight_flush - 6D 5D 4D 3D 2D
+
+# straight_flush with all 7 cards forming one straight finding the best straight
+6C 7C 8C 9C TC JC QC - straight_flush - QC JC TC 9C 8C
+8C 5C TC 6C 7C 9C JC - straight_flush - JC TC 9C 8C 7C
+7D 3D 5D AD 2D 4D 6D - straight_flush - 7D 6D 5D 4D 3D
+KH 8H QH JH AH TH 9H - royal_flush - AH KH QH JH TH
+
+# royal_flush
+JC QC KC 2H 2C AC TC - royal_flush - AC KC QC JC TC
+QC TC AC KC JC 8D 2D - royal_flush - AC KC QC JC TC
+AD KD QD JD TD 6S QH - royal_flush - AD KD QD JD TD
+AC AD TH JH QH KH AH - royal_flush - AH KH QH JH TH
+AH TH KH JH QH KC 3H - royal_flush - AH KH QH JH TH
+2H KH QH TH AH JH 8C - royal_flush - AH KH QH JH TH
+
+# flush with all 7 cards of the same suit
+4S QS 7S AS 9S JS KS - flush - AS KS QS JS 9S
+2C 4C 6C 7C 8C TC AC - flush - AC TC 8C 7C 6C
+TC 7C 2C AC 4C 6C 8C - flush - AC TC 8C 7C 6C
+AH JH QH 5H 2H KH 3H - flush - AH KH QH JH 5H
