@@ -26,4 +26,8 @@ pub const HandType = enum {
         if (eql(u8, string, "royal_flush")) return .royal_flush;
         return ValueError.InvalidHandTypeString;
     }
+
+    pub fn strongerOrEquals(self: HandType, other: HandType) bool {
+        return @enumToInt(self) > @enumToInt(other);
+    }
 };

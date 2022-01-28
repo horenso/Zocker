@@ -10,7 +10,7 @@ const mem = @import("std").mem;
 
 pub const HandEvaluator = struct {
     card_table: [4][14]?Card = undefined,
-    value_histogram: [14]i8 = undefined,
+    value_histogram: [14]u8 = undefined,
     best_hand_found: ?Hand = null,
 
     pub fn new() HandEvaluator {
@@ -20,16 +20,22 @@ pub const HandEvaluator = struct {
     pub fn rateHand(self: *HandEvaluator, cards: [7]Card) Hand {
         self.init();
         self.fillCardTableAndHistogram(cards);
-        // self.printTable();
         self.checkFlushAndStraightFlush();
-        // self.populateCardTableAndHistogram(cards);
-        _ = cards;
+        if (self.best_hand_found) |best_hand| {
+            if (best_hand.hand_type.strongerOrEquals(HandType.straight_flush)) {
+                return best_hand;
+            }
+        } else {
+            // we only care about regular straights if we don't have a flush already
+            self.checkStraight();
+        }
+        self.checkValueCombinations();
         return self.best_hand_found.?;
     }
 
     fn init(self: *HandEvaluator) void {
         self.card_table = mem.zeroes([4][14]?Card);
-        self.value_histogram = mem.zeroes([14]i8);
+        self.value_histogram = mem.zeroes([14]u8);
         self.best_hand_found = null;
     }
 
@@ -67,11 +73,11 @@ pub const HandEvaluator = struct {
         }
     }
 
-    fn setTable(self: *HandEvaluator, value: CardValue, suit: CardSuit, card: Card) void {
-        var value_index: u8 = @enumToInt(value) - 1;
-        var suit_index: u8 = @enumToInt(suit);
-        self.card_table[suit_index][value_index] = card;
-    }
+    // fn setTable(self: *HandEvaluator, value: CardValue, suit: CardSuit, card: Card) void {
+    //     var value_index: u8 = @enumToInt(value) - 1;
+    //     var suit_index: u8 = @enumToInt(suit);
+    //     self.card_table[suit_index][value_index] = card;
+    // }
 
     fn putInHistogram(self: *HandEvaluator, card: Card) void {
         var value_index: u8 = @enumToInt(card.value) - 1;
@@ -83,11 +89,12 @@ pub const HandEvaluator = struct {
 
     fn checkFlushAndStraightFlush(self: *HandEvaluator) void {
         for (self.card_table) |row, suit_index| {
-            var flush_streak: i8 = 0;
-            var straight_flush_streak: i8 = 0;
-            var value_index = row.len - 1;
+            var flush_streak: u8 = 0;
+            var straight_flush_streak: u8 = 0;
+            var value_index = row.len;
 
-            while (value_index > 0) : (value_index -= 1) {
+            while (value_index > 0) {
+                value_index -= 1;
                 if (self.card_table[suit_index][value_index]) |_| {
                     // Ace is already counted at position 13
                     if (value_index != 0) flush_streak += 1;
@@ -97,14 +104,12 @@ pub const HandEvaluator = struct {
                     continue;
                 }
                 if (straight_flush_streak == 5) {
-                    print("found straight flush", .{});
                     var straight_flush_cards: [5]Card = undefined;
-                    var i: u8 = 5;
-                    while (i >= 1) : (i += 1) {
+                    var i: u8 = 0;
+                    while (i < straight_flush_cards.len) : (i += 1) {
                         // .? because we know that the previous five cards must be
                         // present in the table since we hit a straight_flush
-                        straight_flush_cards[i - 1] =
-                            self.card_table[suit_index][value_index + i - 1].?;
+                        straight_flush_cards[i] = self.card_table[suit_index][value_index + 4 - i].?;
                     }
                     const type_of_straight_flush = if (straight_flush_cards[0].value == CardValue.ace)
                         HandType.royal_flush
@@ -115,19 +120,18 @@ pub const HandEvaluator = struct {
                         .cards = straight_flush_cards,
                     };
                     // straigt_flush is the best possible hand, so we can stop looking
-                    print("return", .{});
                     return;
                 }
                 if (flush_streak == 5) {
                     var flush_cards: [5]Card = undefined;
                     var i: u8 = 5;
-                    while (i >= 1) : (value_index += 1) {
-                        if (self.card_table[suit_index][value_index]) |card| {
+                    var offset: u8 = 0;
+                    while (i >= 1) : (offset += 1) {
+                        if (self.card_table[suit_index][value_index + offset]) |card| {
                             flush_cards[i - 1] = card;
                             i -= 1;
                         }
                     }
-                    value_index -= 5;
                     self.best_hand_found = Hand{
                         .hand_type = HandType.flush,
                         .cards = flush_cards,
@@ -137,6 +141,32 @@ pub const HandEvaluator = struct {
                 }
             }
         }
+    }
+
+    fn checkStraight(self: *HandEvaluator) void {
+        var straight_streak: u8 = 0;
+        var value_index = self.card_table[0].len;
+
+        while (value_index > 0) {
+            value_index -= 1;
+            for (self.card_table) |card, suit_index| {
+                _ = card;
+                _ = suit_index;
+                _ = straight_streak;
+                _ = self;
+            }
+        }
+    }
+
+    fn checkValueCombinations(self: *HandEvaluator) void {
+        _ = self;
+        return;
+    }
+
+    fn addKickers(self: *HandEvaluator, number_of_kickers: u8) void {
+        _ = self;
+        _ = number_of_kickers;
+        return;
     }
 
     pub fn printTable(self: *HandEvaluator) void {
